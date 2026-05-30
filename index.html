@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>At-Taheel Academy — ইলমুস সরফ কোর্স</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Hind+Siliguri:wght@300;400;500;600;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* iOS Premium Color Palette */
+    --system-bg: #f2f2f7;         /* iOS Light Secondary System Background */
+    --card-bg: rgba(255, 255, 255, 0.75); /* Premium Frosted Glass */
+    --card-border: rgba(255, 255, 255, 0.4);
+    
+    /* Apple Brand Colors */
+    --apple-blue: #007aff;        /* iOS Accent Blue */
+    --emerald: #0c5a45;           /* Custom Brand Emerald */
+    --emerald-light: #128264;
+    --gold: #b3862b;
+    
+    /* iOS Label Text Colors */
+    --label-primary: #000000;
+    --label-secondary: #3c3c43;   /* 60% opacity look */
+    --label-tertiary: #3c3c43;    /* 30% opacity look */
+    
+    /* SF Shadows & Blurs */
+    --sf-blur: blur(20px) saturate(190%);
+    --sf-shadow: 0 4px 24px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+    --sf-radius-large: 20px;       /* iOS 17 Rounded Corners style */
+    --sf-radius-medium: 14px;
+    --sf-radius-button: 12px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Hind Siliguri', sans-serif;
+    background-color: var(--system-bg);
+    color: var(--label-primary);
+    line-height: 1.5;
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(12, 90, 69, 0.05) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(0, 122, 255, 0.03) 0px, transparent 50%);
+  }
+
+  /* ── iOS NAVIGATION BAR (Frosted Glass) ── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: var(--sf-blur);
+    -webkit-backdrop-filter: var(--sf-blur);
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
+    padding: 0 6%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .nav-brand {
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none;
+  }
+  .nav-logo {
+    width: 36px; height: 36px;
+    background: var(--emerald);
+    border-radius: 9px; /* iOS Icon Smooth Squircle Look */
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: 18px; color: white;
+    font-weight: bold;
+  }
+  .nav-title {
+    font-weight: 700;
+    font-size: 17px; color: var(--label-primary);
+    letter-spacing: -0.5px;
+  }
+  .nav-links {
+    display: flex; gap: 8px; align-items: center;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--label-secondary);
+    text-decoration: none; font-size: 13px; font-weight: 500;
+    padding: 6px 12px; border-radius: var(--sf-radius-button);
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .nav-links a:hover { 
+    background: rgba(0, 0, 0, 0.04);
+    color: var(--label-primary);
+  }
+  .nav-cta {
+    background: var(--emerald) !important;
+    color: white !important;
+    font-weight: 600 !important;
+  }
+  .nav-cta:hover {
+    background: var(--emerald-light) !important;
+  }
+
+  /* ── HERO SECTION (Apple Style Minimal) ── */
+  .hero {
+    min-height: 90vh;
+    display: flex; align-items: center; justify-content: center;
+    padding: 110px 6% 40px;
+  }
+  .hero-content {
+    max-width: 680px; text-align: center;
+  }
+  .hero-arabic {
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: clamp(22px, 3.5vw, 32px);
+    color: var(--emerald);
+    direction: rtl; line-height: 1.8;
+    margin-bottom: 4px;
+  }
+  .hero-arabic-meaning {
+    font-size: 13px; color: rgba(60, 60, 67, 0.6);
+    margin-bottom: 24px; font-weight: 500;
+  }
+  .hero-badge {
+    display: inline-flex;
+    background: rgba(12, 90, 69, 0.08);
+    padding: 4px 14px; border-radius: 100px;
+    color: var(--emerald); font-size: 12px; font-weight: 600;
+    margin-bottom: 20px;
+    letter-spacing: -0.2px;
+  }
+  .hero h1 {
+    font-size: clamp(32px, 5.5vw, 54px);
+    font-weight: 800; color: var(--label-primary); 
+    line-height: 1.15; margin-bottom: 16px;
+    letter-spacing: -1px;
+  }
+  .hero h1 span { color: var(--emerald); }
+  .hero-sub {
+    font-size: 16px; color: rgba(60, 60, 67, 0.8);
+    line-height: 1.6; max-width: 540px; margin: 0 auto 36px;
+    font-weight: 400;
+  }
+  
+  /* iOS Pill Chips Grid */
+  .hero-dates {
+    display: flex; gap: 12px; justify-content: center;
+    flex-wrap: wrap; margin-bottom: 36px;
+  }
+  .date-chip {
+    background: var(--card-bg);
+    backdrop-filter: var(--sf-blur); -webkit-backdrop-filter: var(--sf-blur);
+    border: 1px solid var(--card-border);
+    border-radius: var(--sf-radius-medium); padding: 12px 20px;
+    text-align: center; box-shadow: var(--sf-shadow);
+    min-width: 130px; flex: 1; max-width: 160px;
+  }
+  .date-chip .label { font-size: 11px; color: rgba(60, 60, 67, 0.6); font-weight: 600; margin-bottom: 2px; }
+  .date-chip .value { font-size: 14px; font-weight: 700; color: var(--label-primary); }
+
+  .hero-actions {
+    display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
+  }
+  
+  /* iOS Native Button Styles */
+  .btn-outline {
+    background: var(--emerald);
+    color: white; font-weight: 600; font-size: 15px;
+    padding: 14px 32px; border-radius: var(--sf-radius-button); border: none;
+    cursor: pointer; text-decoration: none; display: inline-flex;
+    align-items: center; gap: 6px; transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(12, 90, 69, 0.2);
+  }
+  .btn-outline:shadow { transform: scale(0.98); opacity: 0.9; }
+  
+  .btn-primary {
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--label-primary); font-weight: 600; font-size: 15px;
+    padding: 14px 32px; border-radius: var(--sf-radius-button); border: none;
+    cursor: pointer; text-decoration: none; display: inline-flex;
+    align-items: center; gap: 6px; transition: all 0.2s ease;
+  }
+  .btn-primary:hover { background: rgba(0, 0, 0, 0.08); }
+
+  /* ── SECTIONS (iOS List Layout Style) ── */
+  section { padding: 80px 6% 40px; max-width: 1100px; margin: 0 auto; }
+  .section-header { text-align: center; margin-bottom: 44px; }
+  .section-tag {
+    font-size: 12px; font-weight: 600; color: var(--emerald);
+    text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; display: inline-block;
+  }
+  .section-title {
+    font-size: clamp(26px, 4vw, 34px);
+    font-weight: 700; color: var(--label-primary); letter-spacing: -0.5px;
+  }
+
+  /* ── CARD GRID DESIGN (iOS Glassmorphism) ── */
+  .features-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;
+  }
+  .feature-card {
+    background: var(--card-bg);
+    backdrop-filter: var(--sf-blur); -webkit-backdrop-filter: var(--sf-blur);
+    border: 1px solid var(--card-border);
+    border-radius: var(--sf-radius-large); padding: 24px;
+    box-shadow: var(--sf-shadow);
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .feature-card:hover { transform: translateY(-2px); }
+  .feature-icon {
+    font-size: 28px; margin-bottom: 16px; display: inline-block;
+  }
+  .feature-card h3 { font-size: 16px; font-weight: 700; color: var(--label-primary); margin-bottom: 8px; letter-spacing: -0.2px; }
+  .feature-card p { font-size: 13.5px; color: var(--label-secondary); line-height: 1.5; }
+
+  /* ── ELIGIBILITY (iOS List Block Style) ── */
+  .elig-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;
+  }
+  .elig-card {
+    background: var(--card-bg); border: 1px solid var(--card-border);
+    border-radius: var(--sf-radius-medium); padding: 20px; text-align: center;
+    backdrop-filter: var(--sf-blur); -webkit-backdrop-filter: var(--sf-blur);
+    box-shadow: var(--sf-shadow);
+  }
+  .elig-icon { font-size: 28px; margin-bottom: 10px; display: inline-block; }
+  .elig-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+  .elig-card p { font-size: 12.5px; color: var(--label-secondary); }
+
+  /* ── PRICING (iOS App Store Purchase Card Style) ── */
+  .pricing-grid {
+    display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; max-width: 800px; margin: 0 auto;
+  }
+  .pricing-card {
+    background: var(--card-bg); border: 1px solid var(--card-border);
+    backdrop-filter: var(--sf-blur); -webkit-backdrop-filter: var(--sf-blur);
+    border-radius: var(--sf-radius-large); padding: 32px 24px;
+    flex: 1; min-width: 290px; box-shadow: var(--sf-shadow); position: relative;
+    display: flex; flex-direction: column;
+  }
+  .pricing-card.featured {
+    border: 1.5px solid var(--emerald);
+  }
+  .pricing-badge {
+    position: absolute; top: -12px; left: 24px;
+    background: var(--emerald); color: white; font-size: 11px; font-weight: 600;
+    padding: 3px 12px; border-radius: 20px;
+  }
+  .pricing-type { font-size: 11px; font-weight: 600; color: var(--emerald); text-transform: uppercase; margin-bottom: 4px; }
+  .pricing-name { font-size: 22px; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.4px; }
+  .pricing-price { font-size: 36px; font-weight: 800; color: var(--label-primary); margin: 12px 0; letter-spacing: -1px; }
+  .pricing-price sub { font-size: 14px; font-weight: 400; color: var(--label-secondary); }
+  .pricing-duration { font-size: 12px; color: var(--label-secondary); margin-bottom: 20px; padding-bottom: 16px; border-bottom: 0.5px solid rgba(0,0,0,0.1); }
+  .pricing-features { list-style: none; margin-bottom: 28px; text-align: left; }
+  .pricing-features li { font-size: 13px; color: var(--label-secondary); padding: 6px 0; display: flex; align-items: center; gap: 8px; }
+  .check { color: var(--emerald); font-weight: bold; }
+  .pricing-card .btn-outline, .pricing-card .btn-primary { width: 100%; justify-content: center; margin-top: auto; }
+
+  /* ── SCHEDULE ── */
+  .schedule-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;
+  }
+  .schedule-card {
+    background: var(--card-bg); border: 1px solid var(--card-border);
+    border-radius: var(--sf-radius-medium); padding: 24px; text-align: center;
+    backdrop-filter: var(--sf-blur); -webkit-backdrop-filter: var(--sf-blur);
+    box-shadow: var(--sf-shadow);
+  }
+  .schedule-icon { font-size: 26px; margin-bottom: 8px; }
+  .schedule-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+  .schedule-card p { font-size: 13px; color: var(--label-secondary); line-height: 1.6; }
+
+  /* ── STUDIO/PORTAL CONTROLLER (iOS Segmented Controls) ── */
+  .portal-container {
+    max-width: 900px; margin: 0 auto;
+    display: grid; grid-template-columns: 1.3fr 1fr; gap: 32px; align-items: start;
+  }
+  
+  /* iOS Segmented Control Selector Pattern */
+  .tab-switcher {
+    display: flex; background: rgba(118, 118, 128, 0.12);
+    border-radius: 9px; padding: 2px; margin-bottom: 24px;
+  }
+  .tab-btn {
+    flex: 1; padding: 7px 12px; border: none; background: transparent;
+    border-radius: 7px; font-size: 13px; font-weight: 600;
+    color: var(--label-secondary); cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .tab-btn.active {
+    background: white; color: black;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 1px rgba(0,0,0,0.05);
+  }
+  
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+  
+  /* iOS Form Fields Inputs Layout */
+  .form-card {
+    background: var(--card-bg); border: 1px solid var(--card-border);
+    backdrop-filter: var(--sf-blur); -webkit-backdrop-filter: var(--sf-blur);
+    border-radius: var(--sf-radius-large); padding: 28px; box-shadow: var(--sf-shadow);
+  }
+  .form-card h2 { font-size: 20px; font-weight: 700; margin-bottom: 4px; letter-spacing: -0.4px; }
+  .form-card p { font-size: 13px; color: var(--label-secondary); margin-bottom: 24px; }
+  .form-group { margin-bottom: 16px; }
+  label { display: block; font-size: 12px; font-weight: 600; color: var(--label-primary); margin-bottom: 6px; }
+  
+  /* Native iOS Input Fields look */
+  input, select, textarea {
+    width: 100%; padding: 12px 14px;
+    border: 0.5px solid rgba(0, 0, 0, 0.15); border-radius: 10px;
+    font-size: 14px; color: black; background: rgba(255, 255, 255, 0.6);
+    outline: none; transition: all 0.15s ease;
+  }
+  input:focus, select:focus {
+    border-color: var(--emerald);
+    background: white;
+  }
+  
+  /* Payment Selector Apple-like */
+  .payment-methods {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;
+  }
+  .payment-option {
+    background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 12px; padding: 14px; text-align: center; cursor: pointer;
+    transition: all 0.2s ease; position: relative;
+  }
+  .payment-option.selected {
+    border-color: var(--emerald); background: rgba(12, 90, 69, 0.04);
+  }
+  .payment-option .pm-logo { font-size: 20px; margin-bottom: 2px; display: block; }
+  .payment-option .pm-name { font-size: 13px; font-weight: 600; color: var(--label-primary); }
+  
+  .selected-badge {
+    position: absolute; top: -6px; right: -6px;
+    background: var(--emerald); color: white; width: 18px; height: 18px;
+    border-radius: 50%; font-size: 10px; display: none;
+    align-items: center; justify-content: center;
+  }
+  .payment-option.selected .selected-badge { display: flex; }
+  
+  .amount-display {
+    background: rgba(0, 0, 0, 0.03); border-radius: 10px; padding: 14px;
+    display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;
+  }
+  .amount-display .label { font-size: 13px; color: var(--label-secondary); font-weight: 500; }
+  .amount-display .amount { font-size: 20px; font-weight: 700; color: var(--emerald); }
+  
+  .submit-btn {
+    width: 100%; background: var(--emerald); color: white;
+    font-weight: 600; font-size: 15px; padding: 14px; border: none; border-radius: var(--sf-radius-button);
+    cursor: pointer; transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(12, 90, 69, 0.15);
+  }
+  .submit-btn:active { opacity: 0.9; transform: scale(0.99); }
+  .submit-btn.gold { background: rgba(0,0,0,0.05); color: var(--label-primary); box-shadow: none; }
+
+  /* INFO PANEL */
+  .info-panel { display: flex; flex-direction: column; gap: 16px; }
+  .info-box {
+    background: var(--card-bg); border: 1px solid var(--card-border);
+    border-radius: var(--sf-radius-large); padding: 24px; box-shadow: var(--sf-shadow);
+    backdrop-filter: var(--sf-blur); -webkit-backdrop-filter: var(--sf-blur);
+  }
+  .info-box h3 { font-size: 16px; font-weight: 700; margin-bottom: 12px; }
+  .contact-item {
+    display: flex; align-items: center; gap: 10px; padding: 10px 0;
+    border-bottom: 0.5px solid rgba(0,0,0,0.08);
+  }
+  .contact-item:last-child { border-bottom: none; }
+  .contact-icon { font-size: 18px; }
+  .contact-item .detail small { font-size: 11px; color: var(--label-secondary); display: block; }
+  .contact-item .detail strong { font-size: 14px; color: var(--label-primary); }
+  
+  .payment-number-card {
+    background: rgba(255, 255, 255, 0.5); border: 0.5px solid rgba(0,0,0,0.1);
+    border-radius: 10px; padding: 12px; margin-bottom: 10px;
+  }
+  .payment-number-card:last-child { margin-bottom: 0; }
+  .payment-number-card .num-type { font-size: 11px; color: var(--label-secondary); font-weight: 600; }
+  .payment-number-card .num-val { font-size: 16px; font-weight: 700; color: var(--emerald); }
+  .payment-number-card .num-note { font-size: 11px; color: var(--label-secondary); }
+  
+  .copy-btn {
+    float: right; background: rgba(0,0,0,0.05); border: none; color: var(--label-primary);
+    padding: 3px 10px; border-radius: 6px; font-size: 11px; font-weight: 600; cursor: pointer;
+  }
+
+  /* LIVE SECTION CLASS PORTAL */
+  .live-badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: rgba(255, 59, 48, 0.1); color: #ff3b30; /* iOS System Red */
+    padding: 4px 10px; border-radius: 100px; font-size: 11px; font-weight: 700; margin-bottom: 16px;
+  }
+  .live-dot { width: 6px; height: 6px; background: #ff3b30; border-radius: 50%; animation: pulse 1.5s infinite; }
+  .slot-item {
+    background: rgba(255, 255, 255, 0.5); border: 0.5px solid rgba(0,0,0,0.1);
+    border-radius: 10px; padding: 14px; display: flex; align-items: center; justify-content: space-between; cursor: pointer;
+  }
+  .slot-time { font-size: 13px; font-weight: 600; }
+  .slot-desc { font-size: 11px; color: var(--label-secondary); }
+  .slot-radio { width: 18px; height: 18px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.2); display: flex; align-items: center; justify-content: center; }
+  .slot-item.selected .slot-radio { border-color: var(--emerald); background: var(--emerald); }
+  .slot-item.selected .slot-radio::after { content: ''; width: 6px; height: 6px; background: white; border-radius: 50%; }
+
+  /* ── iOS ACTION MODAL SHEET ── */
+  .modal-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.3);
+    backdrop-filter: blur(4px); z-index: 1000;
+    display: none; align-items: center; justify-content: center; padding: 20px;
+  }
+  .modal-overlay.active { display: flex; }
+  .modal {
+    background: white; border-radius: var(--sf-radius-large);
+    padding: 32px 24px; max-width: 380px; width: 100%; text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    animation: sheetUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  @keyframes sheetUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+  .modal-icon { font-size: 36px; margin-bottom: 12px; }
+  .modal h2 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+  .modal p { color: var(--label-secondary); font-size: 13.5px; line-height: 1.5; margin-bottom: 20px; }
+  .modal-ref { background: rgba(0,0,0,0.03); border-radius: 10px; padding: 12px; font-size: 12px; margin-bottom: 20px; }
+  .modal-ref strong { color: var(--emerald); font-size: 16px; display: block; margin-top: 2px; font-weight: 700; }
+
+  /* ── iOS TOAST NOTIFICATION ── */
+  .toast {
+    position: fixed; top: 24px; left: 50%; transform: translate(-50%, -100px); z-index: 9999;
+    background: rgba(255, 255, 255, 0.9); backdrop-filter: var(--sf-blur); -webkit-backdrop-filter: var(--sf-blur);
+    color: black; padding: 10px 20px; border-radius: 100px; font-weight: 600; font-size: 13px;
+    display: flex; align-items: center; gap: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    border: 0.5px solid rgba(0,0,0,0.1); opacity: 0;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .toast.show { transform: translate(-50%, 0); opacity: 1; }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 44px 6% 32px; text-align: center; font-size: 13px; color: var(--label-secondary);
+    border-top: 0.5px solid rgba(0,0,0,0.08); margin-top: 60px;
+  }
+  footer .footer-brand { font-size: 17px; font-weight: 700; color: var(--label-primary); margin-bottom: 6px; }
+
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .portal-container { grid-template-columns: 1fr; gap: 24px; }
+    .hero { padding-top: 90px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-brand">
+    <div class="nav-logo">ط</div>
+    <span class="nav-title">At-Taheel Academy</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#features">কোর্স</a></li>
+    <li><a href="#pricing">ফি</a></li>
+    <li><a href="#schedule">শিডিউল</a></li>
+    <li><a href="#portal">পেমেন্ট</a></li>
+    <li><a href="#portal" class="nav-cta">ভর্তি হন</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-arabic">النحو أبو العلوم والصرف أمُّها</div>
+    <div class="hero-arabic-meaning">নাহু হলো জ্ঞানের পিতা, আর সরফ হলো তার মা।</div>
+    <div class="hero-badge">🌿 At-Taheel Academy উপস্থাপন করছে</div>
+    <h1>ইলমুস <span>সরফ</span> শিক্ষা কোর্স</h1>
+    <p class="hero-sub">
+      কোরআনের আয়াতের অর্থ সরাসরি আরবী থেকে বুঝুন। বৈজ্ঞানিক পদ্ধতিতে, সহজ ধাপে ধাপে, কোরআনের নস থেকে সরাসরি অনুশীলনের মাধ্যমে।
+    </p>
+    <div class="hero-dates">
+      <div class="date-chip">
+        <div class="label">🆓 ফ্রি ক্লাস</div>
+        <div class="value">০৫ জুন ২০২৬</div>
+      </div>
+      <div class="date-chip">
+        <div class="label">📌 ভর্তি শেষ</div>
+        <div class="value">১৫ জুন ২০২৬</div>
+      </div>
+      <div class="date-chip">
+        <div class="label">🚀 ক্লাস শুরু</div>
+        <div class="value">২০ জুন ২০২৬</div>
+      </div>
+    </div>
+    <div class="hero-actions">
+      <a href="#portal" class="btn-outline">✨ এখনই ভর্তি হন</a>
+      <a href="#features" class="btn-primary">📖 আরো জানুন</a>
+    </div>
+  </div>
+</section>
+
+<section class="features" id="features">
+  <div class="section-header">
+    <span class="section-tag">কোর্সের বৈশিষ্ট্য</span>
+    <h2 class="section-title">কেন এই কোর্স <span>বেছে নেবেন?</span></h2>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">📖</div>
+      <h3>কোরআন থেকে সরাসরি অনুশীলন</h3>
+      <p>প্রতিটি পাঠ কোরআনের আয়াতের নস বা টেক্সট থেকে সরাসরি প্র্যাকটিক্যালভাবে অনুশীলন করানো হয়।</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎯</div>
+      <h3>৫ ধাপে Level Assessment</h3>
+      <p>কোর্সটি ৫টি ধাপে সাজানো। প্রতিটি ধাপ অতিক্রম করতে Level Assessment Exam উত্তীর্ণ হওয়া বাধ্যতামূলক।</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⏱️</div>
+      <h3>২-৩ মাসেই সম্পন্ন সম্ভব</h3>
+      <p>পরিশ্রম ও একাগ্রতার সাথে মাত্র ২-৩ মাসে কোর্সটি সম্পন্ন করা সম্ভব।</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🤝</div>
+      <h3>Ustaz Helpline সুবিধা</h3>
+      <p>নির্ধারিত ক্লাসের বাইরেও যেকোনো সমস্যায় সরাসরি উস্তাযের সাথে যোগাযোগের সুবিধা।</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📊</div>
+      <h3>তত্ত্বের চেয়ে প্র্যাকটিক্যাল বেশি</h3>
+      <p>নظরি (তত্ত্বীয়) এর চেয়ে تطبيقي (প্র্যাকটিক্যাল) নির্ভরশীল পদ্ধতিতে শিক্ষা দান।</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🏅</div>
+      <h3>সার্টিফিকেট প্রদান</h3>
+      <p>কোর্স সফলভাবে সম্পন্ন করলে At-Taheel Academy থেকে সার্টিফিকেট প্রদান করা হবে।</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📦</div>
+      <h3>বই ও সরফ টোকেন</h3>
+      <p>বই, শীট, সরফ টোকেন ফর ভিডিও প্র্যাকটিস ও তামরীন সহযোগীসহ নানাবিধ উপকরণ।</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔄</div>
+      <h3>Extra Support Service</h3>
+      <p>পিছিয়ে পড়া শিক্ষার্থীদের জন্য বিশেষ সাপোর্ট এবং ১ মাস ফ্রি টিচিং সার্ভিস।</p>
+    </div>
+  </div>
+</section>
+
+<section class="eligibility" id="eligibility">
+  <div class="section-header">
+    <span class="section-tag">যোগ্যতাবলী</span>
+    <h2 class="section-title">ভর্তির <span>শর্তসমূহ</span></h2>
+  </div>
+  <div class="elig-grid">
+    <div class="elig-card">
+      <div class="elig-icon">📿</div>
+      <h3>কোরআন তিলাওয়াত</h3>
+      <p>পবিত্র কোরআন বিশুদ্ধভাবে পড়তে জানতে হবে।</p>
+    </div>
+    <div class="elig-card">
+      <div class="elig-icon">✍️</div>
+      <h3>আরবী লেখার দক্ষতা</h3>
+      <p>মৌলিক পর্যায়ের আরবী হাতে লিখতে পারতে হবে।</p>
+    </div>
+    <div class="elig-card">
+      <div class="elig-icon">📱</div>
+      <h3>স্মার্টফোন ও ইন্টারনেট</h3>
+      <p>স্মার্টফোন ও নিরবিচ্ছিন্ন ইন্টারনেট সংযোগ থাকতে হবে।</p>
+    </div>
+    <div class="elig-card">
+      <div class="elig-icon">💪</div>
+      <h3>মানসিক প্রস্তুতি</h3>
+      <p>একাগ্রতা, পরিশ্রম ও ধারাবাহিকতা বজায় রাখার মানসিকতা থাকতে হবে।</p>
+    </div>
+  </div>
+</section>
+
+<section class="pricing" id="pricing">
+  <div class="section-header">
+    <span class="section-tag">কোর্স ফি</span>
+    <h2 class="section-title">আপনার <span>ক্যাটাগরি</span> বেছে নিন</h2>
+  </div>
+  <div class="pricing-grid">
+    <div class="pricing-card">
+      <div class="pricing-type">মাদ্রাসা ব্যাকগ্রাউন্ড</div>
+      <div class="pricing-name">মাদ্রাসা স্টুডেন্ট</div>
+      <div class="pricing-price">৳৩,৯০০<sub>/কোর্স</sub></div>
+      <div class="pricing-duration">⏳ মেয়াদ: ৪-৫ মাস • ৮ম শ্রেণী থেকে ফাযিল-কামিল</div>
+      <ul class="pricing-features">
+        <li><span class="check">✓</span> ৮ম শ্রেণী থেকে ফাযিল-কামিল পর্যায়</li>
+        <li><span class="check">✓</span> ৪-৫ মাসে কোর্স সম্পন্ন</li>
+        <li><span class="check">✓</span> Level Assessment Exam</li>
+        <li><span class="check">✓</span> সার্টিফিকেট প্রদান</li>
+        <li><span class="check">✓</span> Ustaz Helpline সুবিধা</li>
+      </ul>
+      <a href="#portal" class="btn-primary">ভর্তি হন</a>
+    </div>
+    <div class="pricing-card featured">
+      <div class="pricing-badge">সবচেয়ে জনপ্রিয়</div>
+      <div class="pricing-type">জেনারেল ব্যাকগ্রাউন্ড</div>
+      <div class="pricing-name">জেনারেল স্টুডেন্ট</div>
+      <div class="pricing-price">৳৫,৩০০<sub>/কোর্স</sub></div>
+      <div class="pricing-duration">⏳ মেয়াদ: ৬-৭ মাস • ১০ম শ্রেণী থেকে বিশ্ববিদ্যালয়</div>
+      <ul class="pricing-features">
+        <li><span class="check">✓</span> ১০ম শ্রেণী থেকে বিশ্ববিদ্যালয় পর্যায়</li>
+        <li><span class="check">✓</span> ৬-৭ মাসে কোর্স সম্পন্ন</li>
+        <li><span class="check">✓</span> Level Assessment Exam</li>
+        <li><span class="check">✓</span> সার্টিফিকেট প্রদান</li>
+        <li><span class="check">✓</span> Ustaz Helpline সুবিধা</li>
+      </ul>
+      <a href="#portal" class="btn-outline">ভর্তি হন</a>
+    </div>
+  </div>
+</section>
+
+<section class="schedule" id="schedule">
+  <div class="section-header">
+    <span class="section-tag">ক্লাস শিডিউল</span>
+    <h2 class="section-title">সাপ্তাহিক <span>ক্লাসের সময়</span></h2>
+  </div>
+  <div class="schedule-grid">
+    <div class="schedule-card">
+      <div class="schedule-icon">📅</div>
+      <h3>সপ্তাহে ৩ দিন</h3>
+      <p>বিকল্প ১: বৃহস্পতি+শনি+সোম<br>বিকল্প ২: জুমা+রবি+मंगल</p>
+    </div>
+    <div class="schedule-card">
+      <div class="schedule-icon">☀️</div>
+      <h3>দিনের স্লট</h3>
+      <p>ফজরের পর থেকে শুরু<br>প্রতিটি ক্লাস ২ ঘন্টাব্যাপী</p>
+    </div>
+    <div class="schedule-card">
+      <div class="schedule-icon">🌙</div>
+      <h3>রাতের স্লট</h3>
+      <p>মাগরিবের পর থেকে শুরু<br>প্রতিটি ক্লাস ২ ঘন্টাব্যাপী</p>
+    </div>
+  </div>
+</section>
+
+<section class="portal" id="portal">
+  <div class="section-header">
+    <span class="section-tag">স্টুডেন্ট পোর্টাল</span>
+    <h2 class="section-title">পেমেন্ট করুন ও <span>ক্লাসে যোগ দিন</span></h2>
+  </div>
+  <div class="portal-container">
+    <div>
+      <div class="tab-switcher">
+        <button class="tab-btn active" onclick="switchTab('payment')">💳 টিউশন ফি পেমেন্ট</button>
+        <button class="tab-btn" onclick="switchTab('join')">🎓 ক্লাসে যোগ দিন</button>
+      </div>
+      
+      <div class="tab-content active form-card" id="tab-payment">
+        <h2>টিউশন ফি পরিশোধ</h2>
+        <p>নিচের ফর্মটি পূরণ করুন এবং বিকাশ বা নগদে পেমেন্ট করুন।</p>
+        <div class="form-group">
+          <label>পূর্ণ নাম *</label>
+          <input type="text" id="p-name" placeholder="আপনার পূর্ণ নাম লিখুন">
+        </div>
+        <div class="form-group">
+          <label>মোবাইল নম্বর *</label>
+          <input type="tel" id="p-phone" placeholder="01XXXXXXXXX">
+        </div>
+        <div class="form-group">
+          <label>ক্যাটাগরি বেছে নিন *</label>
+          <select id="p-category" onchange="updateAmount()">
+            <option value="">— ক্যাটাগরি নির্বাচন করুন —</option>
+            <option value="madrasha">মাদ্রাসা ব্যাকগ্রাউন্ড — ৳৩,৯০০</option>
+            <option value="general">জেনারেল ব্যাকগ্রাউন্ড — ৳৫,৩০০</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>পছন্দের ক্লাস স্লট *</label>
+          <select id="p-slot">
+            <option value="">— স্লট নির্বাচন করুন —</option>
+            <option value="morning-batch1">☀️ দিনের স্লট (বৃহস্পতি+শনি+সোম)</option>
+            <option value="night-batch1">🌙 রাতের স্লট (বৃহস্পতি+শনি+সোম)</option>
+          </select>
+        </div>
+        
+        <label style="margin-bottom:10px;">পেমেন্ট পদ্ধতি *</label>
+        <div class="payment-methods">
+          <div class="payment-option" onclick="selectPayment(this,'bkash-1')">
+            <div class="selected-badge">✓</div>
+            <span class="pm-logo">💗</span>
+            <div class="pm-name">bKash</div>
+            <div style="font-size:11px;color:var(--label-secondary);margin-top:2px;">01837772215</div>
+          </div>
+          <div class="payment-option" onclick="selectPayment(this,'nagad-1')">
+            <div class="selected-badge">✓</div>
+            <span class="pm-logo">🟠</span>
+            <div class="pm-name">Nagad</div>
+            <div style="font-size:11px;color:var(--label-secondary);margin-top:2px;">01837772215</div>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label>ট্রানজেকশন আইডি *</label>
+          <input type="text" id="p-txn" placeholder="পেমেন্টের পর ট্রানজেকশন নম্বর দিন">
+        </div>
+        <div class="amount-display" id="amount-display" style="display:none;">
+          <span class="label">প্রদেয় মোট টাকা</span>
+          <span class="amount" id="amount-val">৳০</span>
+        </div>
+        <button class="submit-btn" onclick="submitPayment()">✅ পেমেন্ট কনফার্ম করুন</button>
+      </div>
+
+      <div class="tab-content form-card" id="tab-join">
+        <h2>ক্লাসে যোগ দিন</h2>
+        <p>আপনার রেজিস্ট্রেশন নম্বর দিয়ে লাইভ ক্লাসে প্রবেশ করুন।</p>
+        <div class="live-badge">
+          <div class="live-dot"></div>
+          LIVE CLASS AVAILABLE
+        </div>
+        <div class="form-group">
+          <label>রেজিস্ট্রেশন নম্বর *</label>
+          <input type="text" id="j-reg" placeholder="TAA-XXXXXX">
+        </div>
+        <div class="form-group">
+          <label>মোবাইল নম্বর *</label>
+          <input type="tel" id="j-phone" placeholder="01XXXXXXXXX">
+        </div>
+        <div style="margin-bottom:20px;">
+          <label style="margin-bottom:10px;">আপনার ক্লাস স্লট নির্বাচন করুন</label>
+          <div class="class-slots">
+            <div class="slot-item" onclick="selectSlot(this)">
+              <div>
+                <div class="slot-time">☀️ দিনের স্লট — বৃহস্পতি + শনি + সোম</div>
+                <div class="slot-desc">ফজরের পর থেকে শুরু • ২ ঘন্টা</div>
+              </div>
+              <div class="slot-radio"></div>
+            </div>
+          </div>
+        </div>
+        <button class="submit-btn" onclick="joinClass()">🎓 ক্লাসে প্রবেশ করুন</button>
+      </div>
+    </div>
+
+    <div class="info-panel">
+      <div class="info-box">
+        <h3>📞 যোগাযোগ করুন</h3>
+        <div class="contact-item">
+          <span class="contact-icon">💬</span>
+          <div class="detail">
+            <small>WhatsApp (শুধুমাত্র)</small>
+            <strong>01310787139</strong>
+          </div>
+        </div>
+      </div>
+      <div class="info-box">
+        <h3>💳 পেমেন্ট নম্বরসমূহ</h3>
+        <div class="payment-number-card">
+          <button class="copy-btn" onclick="copyText('01837772215')">Copy</button>
+          <div class="num-type">bKash / Nagad (Personal)</div>
+          <div class="num-val">01837772215</div>
+          <div class="num-note">Send Money হিসেবে পাঠান</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">At-Taheel Academy</div>
+  <p>ইলমুস সরফ শিক্ষা কোর্স — কোরআনকে সরাসরি বোঝার পথে আপনার বিশ্বস্ত সঙ্গী।</p>
+  <p style="margin-top:16px;font-size:12px;opacity:0.6;">© ২০২৬ At-Taheel Academy. সর্বস্বত্ব সংরক্ষিত।</p>
+</footer>
+
+<div class="modal-overlay" id="modal" onclick="closeModal(event)">
+  <div class="modal">
+    <div class="modal-icon" id="modal-icon">✅</div>
+    <h2 id="modal-title">পেমেন্ট সফল হয়েছে!</h2>
+    <p id="modal-body">আপনার পেমেন্ট তথ্য গ্রহণ করা হয়েছে।</p>
+    <div class="modal-ref">
+      রেফারেন্স নম্বর
+      <strong id="modal-ref">TAA-2026-XXXXXX</strong>
+    </div>
+    <button class="submit-btn gold" onclick="closeModal(null)">ঠিক আছে 🏠</button>
+  </div>
+</div>
+
+<div class="toast" id="toast">
+  <span>✓</span>
+  <span id="toast-msg">কপি করা হয়েছে!</span>
+</div>
+
+<script>
+  function switchTab(tab) {
+    document.querySelectorAll('.tab-btn').forEach((b,i) => b.classList.toggle('active', (tab==='payment' && i===0) || (tab==='join' && i===1)));
+    document.getElementById('tab-payment').classList.toggle('active', tab==='payment');
+    document.getElementById('tab-join').classList.toggle('active', tab==='join');
+  }
+  let selectedPayment = null;
+  function selectPayment(el, id) {
+    document.querySelectorAll('.payment-option').forEach(x => x.classList.remove('selected'));
+    el.classList.add('selected');
+    selectedPayment = id;
+  }
+  function selectSlot(el) {
+    document.querySelectorAll('.slot-item').forEach(x => x.classList.remove('selected'));
+    el.classList.add('selected');
+  }
+  const amounts = { madrasha: '৳৩,৯০০', general: '৳৫,৩০০' };
+  function updateAmount() {
+    const cat = document.getElementById('p-category').value;
+    const disp = document.getElementById('amount-display');
+    const val = document.getElementById('amount-val');
+    if (cat && amounts[cat]) { disp.style.display = 'flex'; val.textContent = amounts[cat]; } else { disp.style.display = 'none'; }
+  }
+  function submitPayment() {
+    const ref = 'TAA-' + Date.now().toString().slice(-6);
+    document.getElementById('modal-ref').textContent = ref;
+    document.getElementById('modal').classList.add('active');
+  }
+  function joinClass() {
+    document.getElementById('modal-title').textContent = 'অনুরোধ পাঠানো হয়েছে';
+    document.getElementById('modal').classList.add('active');
+  }
+  function closeModal(e) {
+    if (e === null || e.target === document.getElementById('modal')) { document.getElementById('modal').classList.remove('active'); }
+  }
+  function copyText(txt) {
+    navigator.clipboard.writeText(txt).then(() => {
+      const t = document.getElementById('toast');
+      document.getElementById('toast-msg').textContent = 'কপি হয়েছে: ' + txt;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 3000);
+    });
+  }
+</script>
+</body>
+</html>
+
